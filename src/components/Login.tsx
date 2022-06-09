@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
+import useCodeQuery from "hooks/useCodeQuery";
 
 type Inputs = {
   twitterUsername: string;
@@ -12,6 +13,10 @@ const Login = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
+  const { codedata } = useCodeQuery();
+
+  console.log("hi??", codedata);
+
   const checkAuth = () => {};
 
   const onSubmit = async (data: any) => {
@@ -19,7 +24,7 @@ const Login = () => {
     if (data.userToken === "abc123") {
       alert(JSON.stringify(data));
     } else {
-      alert("There is an error");
+      alert("유효하지 않은 코드입니다.");
     }
   };
   return (
@@ -42,7 +47,7 @@ const Login = () => {
           "Please Enter your Twitter Username"}
         <StyledInput
           placeholder="SPECIAL CODE"
-          {...register("userToken", { required: true, maxLength: 10 })}
+          {...register("userToken", { required: true, maxLength: 6 })}
         />
         {errors.userToken && <p>This field is required</p>}
         <SubmitBtn>Submit</SubmitBtn>
@@ -79,8 +84,8 @@ const StyledForm = styled.form`
 `;
 
 const StyledInput = styled.input`
-  width: 240px;
-  height: 35px;
+  width: 300px;
+  height: 50px;
   margin-top: 2%;
   padding: 15px;
   color: #5e6472;
@@ -90,9 +95,8 @@ const StyledInput = styled.input`
 `;
 
 const SubmitBtn = styled.button`
-  width: 270px;
-  height: 35px;
+  width: 300px;
+  height: 50px;
   background: #b8f2e6;
-  border: none;
   margin-top: 30px;
 `;
