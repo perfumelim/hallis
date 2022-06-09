@@ -5,8 +5,8 @@ import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Counter from "./components/count";
-import Lottie from "react-lottie";
-import DonutBounce from "../src/lotties/donutBounce.json";
+import LottieBox from "./components/LottieBox";
+
 export interface IArrow {
   className?: string | undefined;
   style?: React.CSSProperties | undefined;
@@ -14,15 +14,6 @@ export interface IArrow {
 }
 
 function App() {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: DonutBounce,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
   function SampleNextArrow(props: IArrow) {
     const { className, style, onClick } = props;
     return (
@@ -56,8 +47,7 @@ function App() {
     <Container>
       <h2> Single Item</h2>
       <Counter />
-      <Lottie options={defaultOptions} height={400} width={400} />
-
+      <LottieBox />
       <StyledSlider {...settings}>
         <div>
           <img src="http://placekitten.com/g/400/200" alt="" />
@@ -79,6 +69,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   padding: 50px;
+  background-color: ;
 `;
 
 const StyledSlider = styled(Slider)`
