@@ -18,24 +18,22 @@ const Login = () => {
 
   const { codedata } = useCodeQuery();
 
-  const [isErrorModal, onToggleErrorModal] = useToggle();
-
   const checkAuth = (data: Inputs) => {
     if (codedata.includes(data.userToken)) {
       alert(JSON.stringify(data));
     } else {
-      alert("유효하지 않은 코드입니다.");
+      alert("Invalid code");
       reset();
     }
   };
 
   const onSubmit = (data: Inputs) => {
     checkAuth(data);
-    if (
-      errors.twitterUsername?.type === "required" ||
-      errors.userToken?.type === "required"
-    )
-      onToggleErrorModal();
+    // if (
+    //   errors.twitterUsername?.type === "required" ||
+    //   errors.userToken?.type === "required"
+    // )
+    //   onToggleErrorModal();
   };
   return (
     <Container>
@@ -45,7 +43,7 @@ const Login = () => {
         })}
       >
         <StyledInput
-          placeholder="Your Twitter Username"
+          placeholder="Twitter Username"
           {...register("twitterUsername", {
             required: true,
             minLength: 4,
@@ -54,16 +52,21 @@ const Login = () => {
           id="username"
         />
         {errors.twitterUsername?.type === "required" && (
-          <ErrorModal
-            isModal={isErrorModal}
-            onToggleModal={onToggleErrorModal}
-            onClick={() => onToggleErrorModal()}
-          />
+          <ErrorMessage>
+            <span className="material-icons">info</span>Please Enter Your
+            Twitter Username
+          </ErrorMessage>
         )}
         <StyledInput
-          placeholder="SPECIAL CODE"
+          placeholder="VIP CODE"
           {...register("userToken", { required: true, maxLength: 6 })}
         />
+        {errors.userToken?.type === "required" && (
+          <ErrorMessage>
+            <span className="material-icons">info</span>
+            <p>Please Enter Your Special Code</p>
+          </ErrorMessage>
+        )}
         <SubmitBtn>Submit</SubmitBtn>
       </StyledForm>
     </Container>
@@ -113,4 +116,17 @@ const SubmitBtn = styled.button`
   height: 50px;
   background: #b8f2e6;
   margin-top: 30px;
+`;
+
+const ErrorMessage = styled.div`
+  display: flex;
+  align-items: center;
+  width: 300px;
+  height: 40px;
+  color: #3e403f;
+
+  .material-icons {
+    font-size: 18px;
+    padding-right: 4px;
+  }
 `;
