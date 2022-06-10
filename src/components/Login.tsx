@@ -15,17 +15,16 @@ const Login = () => {
 
   const { codedata } = useCodeQuery();
 
-  console.log("hi??", codedata);
-
-  const checkAuth = () => {};
-
-  const onSubmit = async (data: any) => {
-    await checkAuth();
-    if (data.userToken === "abc123") {
+  const checkAuth = (data: Inputs) => {
+    if (codedata.includes(data.userToken)) {
       alert(JSON.stringify(data));
     } else {
       alert("유효하지 않은 코드입니다.");
     }
+  };
+
+  const onSubmit = (data: Inputs) => {
+    checkAuth(data);
   };
   return (
     <Container>
