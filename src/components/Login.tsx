@@ -6,7 +6,7 @@ import useToggle from "hooks/useToggle";
 
 type Inputs = {
   twitterUsername: string;
-  userToken: string;
+  vipCode: string;
 };
 const Login = () => {
   const {
@@ -19,7 +19,7 @@ const Login = () => {
   const { codedata } = useCodeQuery();
 
   const checkAuth = (data: Inputs) => {
-    if (codedata.includes(data.userToken)) {
+    if (codedata.includes(data.vipCode)) {
       alert(JSON.stringify(data));
     } else {
       alert("Invalid code");
@@ -42,31 +42,34 @@ const Login = () => {
           onSubmit(data);
         })}
       >
-        <StyledInput
-          placeholder="Twitter Username"
-          {...register("twitterUsername", {
-            required: true,
-            minLength: 4,
-          })}
-          type="text"
-          id="username"
-        />
-        {errors.twitterUsername?.type === "required" && (
-          <ErrorMessage>
-            <span className="material-icons">info</span>Please Enter Your
-            Twitter Username
-          </ErrorMessage>
-        )}
-        <StyledInput
-          placeholder="VIP CODE"
-          {...register("userToken", { required: true, maxLength: 6 })}
-        />
-        {errors.userToken?.type === "required" && (
-          <ErrorMessage>
-            <span className="material-icons">info</span>
-            <p>Please Enter Your Special Code</p>
-          </ErrorMessage>
-        )}
+        <div>
+          <label htmlFor="username">Twitter Username</label>
+          <StyledInput
+            {...register("twitterUsername", {
+              required: true,
+              minLength: 4,
+            })}
+            type="text"
+            id="username"
+          />
+          {errors.twitterUsername?.type === "required" && (
+            <ErrorMessage>
+              <span className="material-icons">info</span>Enter your Twitter
+              Username
+            </ErrorMessage>
+          )}
+          <label htmlFor="vipCode">VIP Code</label>
+          <StyledInput
+            {...register("vipCode", { required: true, maxLength: 6 })}
+            id="vipCode"
+          />
+          {errors.vipCode?.type === "required" && (
+            <ErrorMessage>
+              <span className="material-icons">info</span>
+              <p>Enter your exclusive VIP code</p>
+            </ErrorMessage>
+          )}
+        </div>
         <SubmitBtn>Submit</SubmitBtn>
       </StyledForm>
     </Container>
@@ -80,41 +83,45 @@ const Container = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
-  background-image: linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%);
-  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background: linear-gradient(rgba(89, 29, 40, 1), rgba(89, 29, 40, 1)),
+    url("images/Vampire.png");
 `;
 
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 450px;
-  min-height: 500px;
-  height: auto;
+  width: 380px;
   border-radius: 5px;
   padding-top: 15%;
-  margin: 2% auto;
-  box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
-  background-image: linear-gradient(-225deg, #e3fdf5 50%, #ffe6fa 50%);
+  background: linear-gradient(rgba(89, 29, 40, 1), rgba(89, 29, 40, 1)),
+    url("images/Vampire.png");
+  label {
+    font-size: 18px;
+    color: #fccfb9;
+    margin-bottom: 7px;
+  }
 `;
 
 const StyledInput = styled.input`
-  width: 300px;
+  width: 378px;
   height: 50px;
-  margin-top: 2%;
+  margin-bottom: 4%;
   padding: 15px;
-  color: #5e6472;
+  color: #fccfb9;
   outline: none;
-  border: none;
-  border-radius: 0px 5px 5px 0px;
+  background: transparent;
+  border: 1px solid #fccfb9;
+  border-radius: 15px;
 `;
 
 const SubmitBtn = styled.button`
-  width: 300px;
-  height: 50px;
-  background: #b8f2e6;
+  width: 162px;
+  height: 39px;
+  color: #591d28;
+  font-size: 18px;
+  font-weight: 500;
+  background: #fccfb9;
+  border-radius: 38px;
   margin-top: 30px;
 `;
 
@@ -122,8 +129,8 @@ const ErrorMessage = styled.div`
   display: flex;
   align-items: center;
   width: 300px;
-  height: 40px;
-  color: #3e403f;
+  color: #ff0000;
+  margin-bottom: 10px;
 
   .material-icons {
     font-size: 18px;
