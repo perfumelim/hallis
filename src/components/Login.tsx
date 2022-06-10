@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import useCodeQuery from "hooks/useCodeQuery";
+import ErrorModal from "components/ErrorModal";
+import useToggle from "hooks/useToggle";
 
 type Inputs = {
   twitterUsername: string;
@@ -10,21 +12,30 @@ const Login = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<Inputs>();
 
   const { codedata } = useCodeQuery();
+
+  const [isErrorModal, onToggleErrorModal] = useToggle();
 
   const checkAuth = (data: Inputs) => {
     if (codedata.includes(data.userToken)) {
       alert(JSON.stringify(data));
     } else {
       alert("유효하지 않은 코드입니다.");
+      reset();
     }
   };
 
   const onSubmit = (data: Inputs) => {
     checkAuth(data);
+    if (
+      errors.twitterUsername?.type === "required" ||
+      errors.userToken?.type === "required"
+    )
+      onToggleErrorModal();
   };
   return (
     <Container>
@@ -42,13 +53,17 @@ const Login = () => {
           type="text"
           id="username"
         />
-        {errors.twitterUsername?.type === "required" &&
-          "Please Enter your Twitter Username"}
+        {errors.twitterUsername?.type === "required" && (
+          <ErrorModal
+            isModal={isErrorModal}
+            onToggleModal={onToggleErrorModal}
+            onClick={() => onToggleErrorModal()}
+          />
+        )}
         <StyledInput
           placeholder="SPECIAL CODE"
           {...register("userToken", { required: true, maxLength: 6 })}
         />
-        {errors.userToken && <p>This field is required</p>}
         <SubmitBtn>Submit</SubmitBtn>
       </StyledForm>
     </Container>
