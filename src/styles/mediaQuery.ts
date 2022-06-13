@@ -1,7 +1,7 @@
 export const media = {
   fold: `screen and (min-width: 280px)`,
   se: `screen and (min-width: 320px)`,
-  mobile: `screen and (min-width: 375px)`,
+  mobile: `screen and (max-width: 375px)`,
   tablet: `screen and (min-width: 992px)`,
   smallLaptop: `screen and (min-width: 1024px)`,
   laptop: `screen and (min-width: 1200px)`,
@@ -16,8 +16,8 @@ export const media = {
   wide2: `screen and (min-width: 2100px)`,
   moreWide: `screen and (min-width: 2200px)`,
   monitor: `screen and (min-width: 2300px)`,
-  normalMonitor: 'screen and (min-width: 2400px)',
-  biggerMonitor: 'screen and (min-width: 2600px)',
+  normalMonitor: "screen and (min-width: 2400px)",
+  biggerMonitor: "screen and (min-width: 2600px)",
 };
 
 export type Media = keyof typeof media;

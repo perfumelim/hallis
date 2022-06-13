@@ -59,8 +59,14 @@ const Login = () => {
             <label htmlFor="username">Twitter Username</label>
             <StyledInput
               {...register("twitterUsername", {
-                required: true,
-                minLength: 4,
+                required: {
+                  value: true,
+                  message: "Enter your Twitter Username",
+                },
+                minLength: {
+                  value: 4,
+                  message: "Username should be at least 4 characters",
+                },
               })}
               type="text"
               id="username"
@@ -76,11 +82,18 @@ const Login = () => {
               <span>VIP Code is not valid</span>
             </ErrorMessage>
           )}
-          {errors.vipCode?.type === "required" && (
+          {errors.twitterUsername && (
+            <ErrorMessage>
+              <span>{errors.twitterUsername.message}</span>
+            </ErrorMessage>
+          )}
+
+          {!errors.twitterUsername && errors.vipCode?.type === "required" && (
             <ErrorMessage>
               <span>Enter your exclusive VIP code</span>
             </ErrorMessage>
           )}
+
           <SubmitBtn>Submit</SubmitBtn>
         </StyledForm>
       </ContentBox>

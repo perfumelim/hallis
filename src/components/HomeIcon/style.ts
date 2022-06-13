@@ -4,9 +4,9 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   display: flex;
   position: fixed;
-  bottom: 5%;
+  top: 5%;
   left: 5rem;
-  z-index: 9999;
+  z-index: 999;
   width: 12rem;
   @media ${theme.media.tablet} {
     flex-direction: column;
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 const Icon = styled.img`
   width: 5rem;
   height: 5rem;
-  z-index: 9999;
+  z-index: 999;
   @media ${theme.media.tablet} {
     width: 4rem;
     height: 4rem;

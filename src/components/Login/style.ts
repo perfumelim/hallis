@@ -1,14 +1,22 @@
 import styled from "styled-components";
 import { images } from "images/index";
+import { theme } from "styles/theme";
 
 const Container = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-right: 20vw;
   height: 100vh;
+  background-position: left;
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url(${images.vampire});
+  @media ${theme.media.mobile} {
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    padding-right: 0;
+  }
 `;
 
 const ContentBox = styled.div`
@@ -31,6 +39,14 @@ const StyledForm = styled.form`
     font-size: 2rem;
     color: #fccfb9;
   }
+
+  @media ${theme.media.mobile} {
+    width: 150rem;
+
+    label {
+      font-size: 9.5rem;
+    }
+  }
 `;
 
 const InfoBox = styled.div`
@@ -40,6 +56,15 @@ const InfoBox = styled.div`
   img {
     width: 39.4rem;
     margin-bottom: 3rem;
+  }
+
+  @media ${theme.media.mobile} {
+    font-size: 6.5rem;
+    font-weight: 300;
+    margin-bottom: 26.5rem;
+    img {
+      width: 148rem;
+    }
   }
 `;
 
@@ -54,6 +79,13 @@ const StyledInput = styled.input`
   background: transparent;
   border: 1px solid #fccfb9;
   border-radius: 15px;
+
+  @media ${theme.media.mobile} {
+    width: 148rem;
+    height: 21rem;
+    margin-top: 4.5rem;
+    margin-bottom: 7rem;
+  }
 `;
 
 const SubmitBtn = styled.button`
@@ -66,6 +98,14 @@ const SubmitBtn = styled.button`
   border-radius: 38px;
   margin-top: 5rem;
   align-self: flex-end;
+
+  @media ${theme.media.mobile} {
+    width: 87rem;
+    height: 21rem;
+    margin-top: 31rem;
+    align-self: center;
+    font-size: 9.5rem;
+  }
 `;
 
 const ErrorMessage = styled.div`
@@ -77,6 +117,13 @@ const ErrorMessage = styled.div`
   span {
     font-size: 2rem;
     color: #ff0000;
+  }
+  @media ${theme.media.mobile} {
+    width: 148rem;
+    text-align: center;
+    span {
+      font-size: 7.5rem;
+    }
   }
 `;
 
