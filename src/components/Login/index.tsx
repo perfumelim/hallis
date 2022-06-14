@@ -21,6 +21,8 @@ const {
 
 const Login = () => {
   const [isValid, setIsValid] = useState<boolean>(true);
+  const [isMultipleTime, setIsMultipleTime] = useState<boolean>(false);
+  const [count, setCount] = useState<number>(0);
   const {
     register,
     handleSubmit,
@@ -37,7 +39,17 @@ const Login = () => {
 
   const onSubmit = (data: Inputs) => {
     checkAuth(data);
+    setCount((prev) => prev + 1);
+    check();
   };
+
+  const check = () => {
+    if (count > 3) {
+      setIsMultipleTime(true);
+    }
+  };
+
+  console.log("????", count);
   return (
     <Container>
       <ContentBox>
@@ -47,7 +59,9 @@ const Login = () => {
           })}
         >
           <InfoBox>
-            <img src={images.logo} alt="mousai-logo" />
+            <a href="https://google.com">
+              <img src={images.logo} alt="mousai-logo" />
+            </a>
             <p className="mousaiInfo">
               welco akdjflajsdkljglkasdkjflasdjfkljasldjvka
               dfkajsdlkfjlasdjfljalsdjlgjlajsdklfams.a
@@ -73,13 +87,18 @@ const Login = () => {
             />
             <label htmlFor="vipCode">VIP Code</label>
             <StyledInput
-              {...register("vipCode", { required: true, maxLength: 6 })}
+              {...register("vipCode", { required: true })}
               id="vipCode"
             />
           </div>
-          {!isValid && (
+          {!isValid && !isMultipleTime && (
             <ErrorMessage>
               <span>VIP Code is not valid</span>
+            </ErrorMessage>
+          )}
+          {isMultipleTime && (
+            <ErrorMessage>
+              <span>Too many submits! Calm down pal</span>
             </ErrorMessage>
           )}
           {errors.twitterUsername && (
