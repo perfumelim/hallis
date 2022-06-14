@@ -21,9 +21,7 @@ export const GlobalStyles = createGlobalStyle`
       position: relative;
       margin: 0 auto;
       -webkit-overflow-scrolling: touch; 
-
     }
-
     
     body,
     input,

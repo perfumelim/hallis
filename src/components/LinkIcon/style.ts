@@ -7,8 +7,11 @@ const Wrapper = styled.div`
   position: fixed;
   bottom: 5%;
   right: 10%;
-  z-index: 9999;
-  width: 12rem;
+  z-index: 999;
+  width: 52rem;
+  @media ${theme.media.smallTablet} {
+    width: 34rem;
+  }
   @media ${theme.media.tablet} {
     flex-direction: column;
     justify-content: start;
@@ -18,11 +21,15 @@ const Wrapper = styled.div`
 `;
 const Icon = styled.li<{ img: string }>`
   background: url(${(props) => props.img});
-  width: 5rem;
-  height: 5rem;
+  width: 25rem;
+  height: 25rem;
   background-size: contain;
   background-repeat: no-repeat;
-  z-index: 9999;
+  z-index: 999;
+  @media ${theme.media.smallTablet} {
+    width: 16rem;
+    height: 16rem;
+  }
   @media ${theme.media.tablet} {
     width: 5rem;
     height: 5rem;

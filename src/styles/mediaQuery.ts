@@ -1,7 +1,8 @@
 export const media = {
   fold: `screen and (min-width: 280px)`,
   se: `screen and (min-width: 320px)`,
-  mobile: `screen and (max-width: 375px)`,
+  mobile: `screen and (min-width: 375px)`,
+  smallTablet: `screen and (min-width: 768px)`,
   tablet: `screen and (min-width: 992px)`,
   smallLaptop: `screen and (min-width: 1024px)`,
   laptop: `screen and (min-width: 1200px)`,

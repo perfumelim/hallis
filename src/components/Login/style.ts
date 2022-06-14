@@ -4,125 +4,170 @@ import { theme } from "styles/theme";
 
 const Container = styled.div`
   display: flex;
-  justify-content: flex-end;
-  padding-right: 20vw;
-  height: 100vh;
-  background-position: left;
-  background-size: contain;
+  justify-content: center;
+  height: 100%;
+  padding: 20vh 0 0 0;
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   background-image: url(${images.vampire});
-  @media ${theme.media.mobile} {
-    background-size: cover;
-    background-position: center;
-    justify-content: center;
-    padding-right: 0;
+
+  @media ${theme.media.tablet} {
+    background-position: left;
+    background-size: contain;
+    justify-content: flex-end;
+    padding: 20vh 24.5vw 0 0;
   }
 `;
 
 const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 15vh;
   position: relative;
 `;
 
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  width: 39.4rem;
+  width: 150rem;
   border-radius: 5px;
 
   .mousaiInfo {
-    color: #fccfb9;
+    color: ${theme.color.main};
   }
   label {
-    font-size: 2rem;
-    color: #fccfb9;
+    font-size: 9.5rem;
+    color: ${theme.color.main};
   }
 
-  @media ${theme.media.mobile} {
-    width: 150rem;
+  @media ${theme.media.smallTablet} {
+    width: 110rem;
 
     label {
-      font-size: 9.5rem;
+      font-size: 5rem;
+    }
+  }
+
+  @media ${theme.media.tablet} {
+    width: 39.4rem;
+
+    label {
+      font-size: 2rem;
     }
   }
 `;
 
 const InfoBox = styled.div`
   text-align: right;
-  margin-bottom: 13.7rem;
-  font-size: 2rem;
+  margin-bottom: 26.5rem;
+  font-size: 6.5rem;
+  font-weight: 300;
   img {
-    width: 39.4rem;
-    margin-bottom: 3rem;
+    width: 148rem;
+    margin-bottom: 11rem;
   }
 
-  @media ${theme.media.mobile} {
-    font-size: 6.5rem;
-    font-weight: 300;
-    margin-bottom: 26.5rem;
+  @media ${theme.media.smallTablet} {
+    font-size: 4rem;
+    margin-bottom: 18rem;
     img {
-      width: 148rem;
+      width: 110rem;
+      margin-bottom: 9rem;
+    }
+  }
+
+  @media ${theme.media.tablet} {
+    font-size: 2rem;
+    margin-bottom: 13.7rem;
+
+    img {
+      width: 39.4rem;
+      margin-bottom: 3rem;
     }
   }
 `;
 
 const StyledInput = styled.input`
-  width: 39.4rem;
-  height: 6rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  padding: 1.75rem;
+  width: 148rem;
+  height: 21rem;
+  padding: 6rem;
+  margin-top: 4.5rem;
+  margin-bottom: 7rem;
   color: #fccfb9;
   outline: none;
   background: transparent;
   border: 1px solid #fccfb9;
   border-radius: 15px;
 
-  @media ${theme.media.mobile} {
-    width: 148rem;
-    height: 21rem;
-    margin-top: 4.5rem;
-    margin-bottom: 7rem;
+  @media ${theme.media.smallTablet} {
+    width: 110rem;
+    height: 14rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 3rem;
+    font-size: 4rem;
+  }
+
+  @media ${theme.media.tablet} {
+    width: 39.4rem;
+    height: 6rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.75rem;
+    font-size: 2rem;
   }
 `;
 
 const SubmitBtn = styled.button`
-  width: 17rem;
-  height: 4.1rem;
-  color: #591d28;
-  font-size: 2rem;
+  width: 87rem;
+  height: 21rem;
+  margin-top: 29rem;
+  align-self: center;
+  font-size: 9.5rem;
+  color: ${theme.color.wine};
   font-weight: 500;
-  background: #fccfb9;
+  background: ${theme.color.main};
   border-radius: 38px;
-  margin-top: 5rem;
-  align-self: flex-end;
 
-  @media ${theme.media.mobile} {
-    width: 87rem;
-    height: 21rem;
-    margin-top: 31rem;
+  @media ${theme.media.smallTablet} {
+    width: 55rem;
+    height: 12rem;
+    margin-top: 18rem;
     align-self: center;
-    font-size: 9.5rem;
+    font-size: 4.5rem;
+  }
+
+  @media ${theme.media.tablet} {
+    width: 17rem;
+    height: 4.1rem;
+    margin-top: 5rem;
+    align-self: flex-end;
+    font-size: 2rem;
   }
 `;
 
 const ErrorMessage = styled.div`
-  width: 39.4rem;
-  text-align: right;
-  padding-right: 1.5rem;
+  width: 148rem;
+  text-align: center;
   position: absoulte;
   bottom: -3rem;
   span {
-    font-size: 2rem;
+    font-size: 7.5rem;
     color: #ff0000;
   }
-  @media ${theme.media.mobile} {
-    width: 148rem;
-    text-align: center;
+
+  @media ${theme.media.smallTablet} {
+    width: 110rem;
     span {
-      font-size: 7.5rem;
+      font-size: 5rem;
+    }
+  }
+  @media ${theme.media.tablet} {
+    width: 39.4rem;
+    text-align: right;
+    padding-right: 1.5rem;
+    span {
+      font-size: 2rem;
     }
   }
 `;

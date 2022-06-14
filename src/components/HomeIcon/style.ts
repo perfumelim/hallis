@@ -5,20 +5,22 @@ const Wrapper = styled.div`
   display: flex;
   position: fixed;
   top: 5%;
-  left: 5rem;
+  left: 5%;
   z-index: 999;
-  width: 12rem;
+  width: 14rem;
   @media ${theme.media.tablet} {
-    flex-direction: column;
-    justify-content: start;
-    top: 5rem;
-    right: 0;
+    top: 4%;
+    left: 2%;
   }
 `;
 const Icon = styled.img`
-  width: 5rem;
-  height: 5rem;
+  width: 14rem;
+  height: 14rem;
   z-index: 999;
+  @media ${theme.media.smallTablet} {
+    width: 9rem;
+    height: 9rem;
+  }
   @media ${theme.media.tablet} {
     width: 4rem;
     height: 4rem;
