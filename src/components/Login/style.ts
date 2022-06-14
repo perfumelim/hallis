@@ -6,7 +6,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   height: 100%;
-  padding: 20vh 0 0 0;
+  padding: 12vh 0 0 0;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -59,7 +59,7 @@ const StyledForm = styled.form`
 
 const InfoBox = styled.div`
   text-align: right;
-  margin-bottom: 26.5rem;
+  margin-bottom: 20.5rem;
   font-size: 6.5rem;
   font-weight: 300;
   img {
@@ -149,8 +149,7 @@ const SubmitBtn = styled.button`
 const ErrorMessage = styled.div`
   width: 148rem;
   text-align: center;
-  position: absoulte;
-  bottom: -3rem;
+  position: absolute;
   span {
     font-size: 7.5rem;
     color: #ff0000;
@@ -158,6 +157,8 @@ const ErrorMessage = styled.div`
 
   @media ${theme.media.smallTablet} {
     width: 110rem;
+    left: 8rem;
+    top: 50rem;
     span {
       font-size: 5rem;
     }
@@ -165,6 +166,7 @@ const ErrorMessage = styled.div`
   @media ${theme.media.tablet} {
     width: 39.4rem;
     text-align: right;
+
     padding-right: 1.5rem;
     span {
       font-size: 2rem;

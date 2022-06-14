@@ -5,12 +5,14 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   position: fixed;
-  bottom: 5%;
-  right: 10%;
+  bottom: 2%;
+  right: 5%;
   z-index: 999;
-  width: 52rem;
+  width: 53rem;
+
   @media ${theme.media.smallTablet} {
     width: 34rem;
+    bottom: 5%;
   }
   @media ${theme.media.tablet} {
     flex-direction: column;

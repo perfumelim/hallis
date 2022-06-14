@@ -59,7 +59,7 @@ const Login = () => {
           })}
         >
           <InfoBox>
-            <a href="https://google.com">
+            <a href="https://mousai.club">
               <img src={images.logo} alt="mousai-logo" />
             </a>
             <p className="mousaiInfo">
