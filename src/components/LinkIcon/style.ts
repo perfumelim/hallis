@@ -8,17 +8,18 @@ const Wrapper = styled.div`
   bottom: 2%;
   right: 5%;
   z-index: 999;
-  width: 53rem;
+  width: 84rem;
 
   @media ${theme.media.smallTablet} {
-    width: 34rem;
+    width: 52rem;
     bottom: 5%;
   }
   @media ${theme.media.tablet} {
+    width: 6rem;
     flex-direction: column;
     justify-content: start;
     top: 5rem;
-    right: 0;
+    right: 6rem;
   }
 `;
 const Icon = styled.li<{ img: string }>`
@@ -33,8 +34,8 @@ const Icon = styled.li<{ img: string }>`
     height: 16rem;
   }
   @media ${theme.media.tablet} {
-    width: 5rem;
-    height: 5rem;
+    width: 6rem;
+    height: 6rem;
     &:last-child {
       margin-top: 2rem;
     }

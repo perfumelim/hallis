@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   position: fixed;
   z-index: 999;
   @media ${theme.media.tablet} {
-    top: 4%;
+    top: 4rem;
     left: 2%;
   }
 `;

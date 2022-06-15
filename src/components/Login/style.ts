@@ -23,7 +23,6 @@ const Container = styled.div`
 const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
-  position: relative;
 `;
 
 const StyledForm = styled.form`
@@ -31,6 +30,7 @@ const StyledForm = styled.form`
   flex-direction: column;
   width: 150rem;
   border-radius: 5px;
+  position: relative;
 
   .mousaiInfo {
     color: ${theme.color.main};
@@ -150,6 +150,7 @@ const ErrorMessage = styled.div`
   width: 148rem;
   text-align: center;
   position: absolute;
+  bottom: 40rem;
   span {
     font-size: 7.5rem;
     color: #ff0000;
@@ -157,8 +158,8 @@ const ErrorMessage = styled.div`
 
   @media ${theme.media.smallTablet} {
     width: 110rem;
-    left: 8rem;
-    top: 50rem;
+    bottom: 22rem;
+
     span {
       font-size: 5rem;
     }
@@ -166,6 +167,7 @@ const ErrorMessage = styled.div`
   @media ${theme.media.tablet} {
     width: 39.4rem;
     text-align: right;
+    bottom: 6rem;
 
     padding-right: 1.5rem;
     span {
