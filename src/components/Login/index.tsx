@@ -3,11 +3,12 @@ import useCodeQuery from "hooks/useCodeQuery";
 import { images } from "images/index";
 import { useState } from "react";
 import style from "components/Login/style";
+import { IUserInfo } from "types/type";
+import useRegister from "hooks/useRegister";
 
-type Inputs = {
-  twitterUsername: string;
-  vipCode: string;
-};
+export interface AuthFormProps {
+  isRegister?: boolean;
+}
 
 const {
   Container,
@@ -19,7 +20,7 @@ const {
   StyledInput,
 } = style;
 
-const Login = () => {
+const Login = ({ isRegister }: AuthFormProps) => {
   const [isValid, setIsValid] = useState<boolean>(true);
   const [isMultipleTime, setIsMultipleTime] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
@@ -27,26 +28,26 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
-
+  } = useForm<IUserInfo>();
+  const { mutate: registers, isLoading } = useRegister();
   const { codedata } = useCodeQuery();
 
-  const checkAuth = (data: Inputs) => {
+  const checkAuth = (data: IUserInfo) => {
     codedata.includes(data.vipCode)
       ? alert("다음 페이지로 이동")
       : setIsValid(false);
-  };
-
-  const onSubmit = (data: Inputs) => {
-    checkAuth(data);
-    setCount((prev) => prev + 1);
-    check();
   };
 
   const check = () => {
     if (count > 3) {
       setIsMultipleTime(true);
     }
+  };
+
+  const onSubmit = (data: IUserInfo) => {
+    checkAuth(data);
+    setCount((prev) => prev + 1);
+    check();
   };
 
   console.log("????", count);
