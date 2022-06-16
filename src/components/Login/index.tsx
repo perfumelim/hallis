@@ -5,22 +5,12 @@ import { useState } from "react";
 import style from "components/Login/style";
 import { IUserInfo } from "types/type";
 import useRegister from "hooks/useRegister";
+import ErrorBox from "components/ErrorBox";
 
-export interface AuthFormProps {
-  isRegister?: boolean;
-}
+const { Container, ContentBox, StyledForm, InfoBox, SubmitBtn, StyledInput } =
+  style;
 
-const {
-  Container,
-  ContentBox,
-  StyledForm,
-  InfoBox,
-  SubmitBtn,
-  ErrorMessage,
-  StyledInput,
-} = style;
-
-const Login = ({ isRegister }: AuthFormProps) => {
+const Login = () => {
   const [isValid, setIsValid] = useState<boolean>(true);
   const [isMultipleTime, setIsMultipleTime] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
@@ -29,7 +19,8 @@ const Login = ({ isRegister }: AuthFormProps) => {
     handleSubmit,
     formState: { errors },
   } = useForm<IUserInfo>();
-  const { mutate: registers, isLoading } = useRegister();
+
+  const mutation = useRegister();
   const { codedata } = useCodeQuery();
 
   const checkAuth = (data: IUserInfo) => {
@@ -47,10 +38,10 @@ const Login = ({ isRegister }: AuthFormProps) => {
   const onSubmit = (data: IUserInfo) => {
     checkAuth(data);
     setCount((prev) => prev + 1);
+    mutation.mutate(data);
     check();
   };
 
-  console.log("????", count);
   return (
     <Container>
       <ContentBox>
@@ -60,7 +51,7 @@ const Login = ({ isRegister }: AuthFormProps) => {
           })}
         >
           <InfoBox>
-            <a href="https://mousai.club">
+            <a href="http://mousai.club">
               <img src={images.logo} alt="mousai-logo" />
             </a>
             <p className="mousaiInfo">
@@ -93,25 +84,25 @@ const Login = ({ isRegister }: AuthFormProps) => {
             />
           </div>
           {!isValid && !isMultipleTime && (
-            <ErrorMessage>
+            <ErrorBox>
               <span>VIP Code is not valid</span>
-            </ErrorMessage>
+            </ErrorBox>
           )}
           {isMultipleTime && (
-            <ErrorMessage>
+            <ErrorBox>
               <span>Too many submits! Calm down pal</span>
-            </ErrorMessage>
+            </ErrorBox>
           )}
           {errors.twitterUsername && (
-            <ErrorMessage>
+            <ErrorBox>
               <span>{errors.twitterUsername.message}</span>
-            </ErrorMessage>
+            </ErrorBox>
           )}
 
           {!errors.twitterUsername && errors.vipCode?.type === "required" && (
-            <ErrorMessage>
+            <ErrorBox>
               <span>Enter your exclusive VIP code</span>
-            </ErrorMessage>
+            </ErrorBox>
           )}
 
           <SubmitBtn>Submit</SubmitBtn>

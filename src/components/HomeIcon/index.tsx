@@ -6,7 +6,7 @@ const { Wrapper, Icon } = style;
 function HomeIcon() {
   return (
     <Wrapper>
-      <a href="https://mousai.club">
+      <a href="http://mousai.club">
         <Icon src={images.mousaiLogo}></Icon>
       </a>
     </Wrapper>
